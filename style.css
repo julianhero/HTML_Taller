@@ -10,3 +10,17 @@ body {
     background-color: #d0c5d0;
     text-align: center;
 }
+
+#principal {
+    display: inline-block;
+    text-align: left; 
+    list-style-position: inside;
+}
+
+h2{
+    text-align: center;
+}
+
+#formula{
+    text-align: center;
+}
