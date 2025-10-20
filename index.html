@@ -2,25 +2,27 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <title>Taller HTML</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <title>Taller HTML</title>
 </head>
 
 <body>
     <h1 class="fst-italic">Sushi Hero´s</h1>
     <p class="fw-bold fs-4">Menú</p>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col"><img src="Imagenes/sushi_de_salmon_y_aguacate_53623_0_600.webp" class="img-fluid"
                     alt="sushi_salmon"></div>
             <div class="col-md-8">
-                <p class="fw-semibold">Sushi del mes</p>El sushi de salmón y aguacate es una combinación clásica que
-                ofrece una armonía perfecta entre la suavidad del salmón y la cremosidad del aguacate.
+                <p class="fw-semibold">Sushi del mes</p>
+                El sushi de salmón y aguacate es una combinación clásica que ofrece una armonía perfecta entre la
+                suavidad del salmón y la cremosidad del aguacate.
                 <div class="container-fluid">
-                    <div class="col fw-semibold">¿Quieres saber como lo preparamos?
+                    <div class="col fw-semibold">¿Quieres saber cómo lo preparamos?
                         <a href="https://www.mundodeportivo.com/uncomo/comida/articulo/recetas-de-sushi-53623.html"
                             target="_blank">Receta sushi del mes</a>
                     </div>
@@ -28,33 +30,81 @@
             </div>
         </div>
     </div>
+
+    <!-- Top 3 -->
     <div class="container-fluid mt-5">
         <p class="fw-medium">TOP 3: Mejores Sushi's</p>
-        <div id="principal" class="col">
-            <div class="row">
-                <ol>
-                    <li>Sushi de salmón y aguacate</li>
-                    <li>Sushi tempura de langostinos</li>
-                    <li>Sushi vegano de aguacate y pepino(Version vegetariana)</li>
+        <div class="row">
+            <!-- Lista -->
+            <div class="col-md-6">
+                <ol id="listaSushi">
+                    <li><a href="#" onclick="mostrarDetalle(1)" class="text-decoration-none">Sushi de salmón y aguacate</a></li>
+                    <li><a href="#" onclick="mostrarDetalle(2)" class="text-decoration-none">Sushi tempura de langostinos</a></li>
+                    <li><a href="#" onclick="mostrarDetalle(3)" class="text-decoration-none">Sushi vegano de aguacate y pepino (Versión vegetariana)</a></li>
                 </ol>
+            </div>
+
+            <!-- Detalle dinámico -->
+            <div class="col-md-6" id="detalleSushi">
+                <!-- Aquí se mostrará el detalle -->
             </div>
         </div>
     </div>
+
+    <!-- Pedidos -->
     <h2>Pedidos</h2>
     <form id="formula">
-        Direccion:
-        <br />
-        <br />
+        Dirección:
+        <br><br>
         <input type="text" name="ciudad" value="Dirección">
-        <br />
-        <br /> Telefono:
-        <br />
-        <br />
-        <input type="text" name="zipcode" value="Telefono">
-        <br />
-        <br />
+        <br><br> Teléfono:
+        <br><br>
+        <input type="text" name="zipcode" value="Teléfono">
+        <br><br>
         <input type="submit" value="Enviar">
     </form>
+
+    <script>
+        // Datos de los sushis
+        const sushis = [
+            {
+                id: 1,
+                nombre: "Sushi de salmón y aguacate",
+                descripcion: "Una deliciosa combinación entre la suavidad del salmón y la cremosidad del aguacate, servida con arroz perfectamente sazonado.",
+                imagen: "Imagenes/sushi_de_salmon_y_aguacate_53623_0_600.webp",
+                enlace: "https://www.mundodeportivo.com/uncomo/comida/articulo/recetas-de-sushi-53623.html"
+            },
+            {
+                id: 2,
+                nombre: "Sushi tempura de langostinos",
+                descripcion: "Crujiente por fuera y suave por dentro. Langostinos empanizados en tempura, con arroz y salsa especial de la casa.",
+                imagen: "Imagenes/sushi_tempura_de_langostinos_53623_1_orig.jpg",
+                enlace: "https://www.mundodeportivo.com/uncomo/comida/articulo/recetas-de-sushi-53623.html#anchor_1"
+            },
+            {
+                id: 3,
+                nombre: "Sushi vegano de aguacate y pepino",
+                descripcion: "Ideal para vegetarianos, con ingredientes frescos como pepino, aguacate y arroz con vinagre japonés.",
+                imagen: "Imagenes/sushi_vegano_de_aguacate_y_pepino_53623_2_orig.jpg",
+                enlace: "https://www.mundodeportivo.com/uncomo/comida/articulo/recetas-de-sushi-53623.html#anchor_2"
+            }
+        ];
+
+        // Mostrar detalle
+        function mostrarDetalle(id) {
+            const sushi = sushis.find(s => s.id === id);
+            document.getElementById("detalleSushi").innerHTML = `
+                <div class="card shadow-sm">
+                    <img src="${sushi.imagen}" class="card-img-top" alt="${sushi.nombre}">
+                    <div class="card-body">
+                        <h5 class="card-title">${sushi.nombre}</h5>
+                        <p class="card-text">${sushi.descripcion}</p>
+                        <a href="${sushi.enlace}" target="_blank" class="card-link">Ver receta completa</a>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
 
 </body>
 

@@ -24,3 +24,8 @@ h2{
 #formula{
     text-align: center;
 }
+
+.card {
+    background-color: #f8f8f8;
+    border-radius: 15px;
+}
